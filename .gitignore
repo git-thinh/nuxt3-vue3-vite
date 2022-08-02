@@ -4,3 +4,5 @@ dist
 .output
 .nuxt
 .env
+/yarn.lock
+/package-lock.json

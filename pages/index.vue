@@ -7,7 +7,7 @@
 
 	const config = useRuntimeConfig();
 	const route = useRoute();
-	console.log('setup = ', route)
+	//console.log('setup = ', route)
 
 	const url = 'https://m.op.pimage.mascot.dk/data/sites.json';
 	const [{
@@ -50,7 +50,7 @@
 		// 	};
 		// },
 		render() {
-			console.log('data[2] = ', this.site);
+			console.log('data[2] = ', this.site.length);
 
 			const c1 = resolveComponent('Test01')
 			const c2 = resolveComponent('Test02')
