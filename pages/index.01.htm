@@ -1,0 +1,54 @@
+<template>
+	<h1>Index</h1>
+	<component :is="value"></component>
+</template>
+<script lang="ts">
+	// import {
+	// 	h,
+	// 	defineAsyncComponent
+	// } from 'vue'
+
+
+	export default {
+		setup() {
+			const LocalComponent = defineAsyncComponent(
+			  () =>
+			    new Promise((resolve) => {
+			      resolve({
+			        template: `
+					<div>
+			          <h2>
+			            This is a local component defined as async!
+			          </h2>
+					  <Test01/>					  
+					  </div>
+			        `
+			      });
+			    })
+			);
+
+			// 	//import.meta.glob("../index.html", { as: "raw" })
+			// 	const val = 'Test';
+			// 	const a = import.meta.glob(`../${val}/*.vue`);
+			// 	console.log(a);
+
+			return {
+				//value: 'Test01'
+				value: LocalComponent
+			}
+
+		}
+		// render() {
+		// 	// // use an array to return multiple root nodes
+		// 	// return [
+		// 	//   h('div'),
+		// 	//   h('div'),
+		// 	//   h('div')
+		// 	// ]
+
+
+		// 	const res = compileToFunctions('<Test01/>');
+		// 	return res.render()
+		// }
+	}
+</script>

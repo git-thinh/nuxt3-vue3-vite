@@ -1,0 +1,41 @@
+<script lang="ts" setup>
+	let com = ref(undefined);
+
+	const getComponent = () => {
+
+		return defineAsyncComponent(() => new Promise((resolve) => {
+			resolve({
+				props: {
+					name: {
+						type: String,
+						default: ''
+					}
+				},
+				template: `
+					<div>
+			          <h2>
+			            {{name}} - This is a local component defined as async!
+			          </h2>
+					  <Test01 :name="name"/>
+					  </div>
+			        `
+			});
+		}));
+	};
+
+	com = getComponent();
+
+	const name = new Date().getTime().toString();
+
+	console.log('SETUP = ', name);
+
+	// 	//import.meta.glob("../index.html", { as: "raw" })
+
+	// 	const val = 'Test';
+	// 	const a = import.meta.glob(`../${val}/*.vue`);
+	// 	console.log(a);
+</script>
+<template>
+	<h1>Index</h1>
+	<component :is="com" :name="name"></component>
+</template>
